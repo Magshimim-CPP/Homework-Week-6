@@ -7,7 +7,7 @@
 #include "InputException.h"
 #include <string>
 #include <iostream>
-
+/*
 int main()
 {
 	std::string nam, col; double rad = 0, ang = 0, ang2 = 180; int height = 0, width = 0;
@@ -29,6 +29,7 @@ int main()
 	while (x != 'x') {
 		std::cout << "which shape would you like to work with?.. \nc=circle, q = quadrilateral, r = rectangle, p = parallelogram" << std::endl;
 		std::cin >> shapetype;
+		InputException::checkInput();
 try
 		{
 
@@ -36,6 +37,7 @@ try
 			case 'c':
 				std::cout << "enter color, name,  rad for circle" << std::endl;
 				std::cin >> col >> nam >> rad;
+				InputException::checkInput();
 				circ.setColor(col);
 				circ.setName(nam);
 				circ.setRad(rad);
@@ -44,6 +46,7 @@ try
 			case 'q':
 				std::cout << "enter name, color, height, width" << std::endl;
 				std::cin >> nam >> col >> height >> width;
+				InputException::checkInput();
 				quad.setName(nam);
 				quad.setColor(col);
 				quad.setHeight(height);
@@ -53,6 +56,7 @@ try
 			case 'r':
 				std::cout << "enter name, color, height, width" << std::endl;
 				std::cin >> nam >> col >> height >> width;
+				InputException::checkInput();
 				rec.setName(nam);
 				rec.setColor(col);
 				rec.setHeight(height);
@@ -62,6 +66,7 @@ try
 			case 'p':
 				std::cout << "enter name, color, height, width, 2 angles" << std::endl;
 				std::cin >> nam >> col >> height >> width >> ang >> ang2;
+				InputException::checkInput();
 				para.setName(nam);
 				para.setColor(col);
 				para.setHeight(height);
@@ -74,7 +79,8 @@ try
 				break;
 			}
 			std::cout << "would you like to add more object press any key if not press x" << std::endl;
-			std::cin.get() >> x;
+			std::cin >> x;
+			InputException::checkInput();
 		}
 		catch (std::exception& e) //catching the exception by reference.
 		{
@@ -95,12 +101,13 @@ try
 Static function to check input errors (cin fail), in case user enterd a char to int etc..
 Input: int& num (reference variable)
 Output: none
-*/
+
 void InputException::checkInput()
 {
 	if (std::cin.fail()) //checking if there is a cin fail (input error)
 	{
 		std::cin.clear(); //clearing the input buffer
 		std::cin.ignore(CHAR_MAX, '\n'); //ignoring cin input until '\n' (new line).
+		throw InputException();
 	}
-}
+}*/

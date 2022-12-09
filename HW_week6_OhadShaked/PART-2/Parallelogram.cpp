@@ -7,7 +7,12 @@
 #include <iostream>
 
 
-Parallelogram::Parallelogram(std::string col, std::string nam, int h, int w, double ang, double ang2):Quadrilateral(col, nam, h, w) {
+Parallelogram::Parallelogram(std::string col, std::string nam, int h, int w, double ang, double ang2):Quadrilateral(col, nam, h, w)
+{
+	if (ang > 180 || ang < 0 || ang2 < 0 || ang2 > 180 || ang + ang2 > 180 || ang + ang2 < 0 || h < 0 || w < 0)
+	{
+		throw ShapeException();
+	}
 	 setAngle(ang, ang2);
 }
 void Parallelogram::draw()
@@ -24,6 +29,10 @@ double Parallelogram::CalArea(double w, double h) {
 	return w*h;
 }
 void Parallelogram::setAngle(double ang, double ang2) {
+	if (ang > 180 || ang < 0 || ang2 < 0 || ang2 > 180 || ang + ang2 > 180 || ang + ang2 < 0)
+	{
+		throw ShapeException();
+	}
 	angle = ang;
 	angle2 = ang2;
 }

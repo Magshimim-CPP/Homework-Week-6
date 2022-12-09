@@ -11,7 +11,7 @@ public:
 	{
 		return "ERROR: Wrong type of integer\n";
 	}
-	static void checkInput(int& num);
+	static void checkInput();
 };
 
 #endif

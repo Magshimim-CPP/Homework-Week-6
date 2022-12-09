@@ -5,7 +5,10 @@
 #include <iostream>
 
 rectangle::rectangle(std::string nam, std::string col, int w, int h):Quadrilateral(nam,col,w, h){
-
+	if (w < 0 || h < 0)
+	{
+		throw ShapeException();
+	}
 	//void setName(string nam);
 	//void setColor(string col);
 	//setHeight( h); //void already defined in header prototype..
@@ -29,7 +32,10 @@ double rectangle::CalArea(double w, double h) {
 	area;
 }*/
 bool rectangle::isSquare(int w, int h) {
-	
+	if (w < 0 || h < 0)
+	{
+		throw ShapeException();
+	}
 	if (w == h)
 	{
 		return true;

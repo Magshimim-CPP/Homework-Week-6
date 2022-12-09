@@ -5,6 +5,10 @@
 
 Circle::Circle(std::string nam, std::string col, double rad):Shape(col, nam)
 {
+	if (rad < 0)
+	{
+		throw ShapeException();
+	}
 	//void setName(string nam);
 	//void setColor(string col); <-this redefines it d/n use
 	setRad(rad);		
@@ -14,13 +18,21 @@ void Circle::draw()
 	std::cout << std::endl<<"Color is "<<getColor() << std::endl <<"Name is "<< getName()<< std::endl<<"radius is "<<getRad()<< std::endl<<"Circumference: "<< CalCircumference()<< std::endl;;
 }
 
-void Circle::setRad(double rad) {
+void Circle::setRad(double rad)
+{
+	if (rad < 0)
+	{
+		throw ShapeException();
+	}
 	radius = rad;
 }
 
 double Circle::CalArea() {
 	double area = 3.14*radius*radius;
-	
+	if (area < 0)
+	{
+		throw ShapeException();
+	}
 	return area;
 	
 }

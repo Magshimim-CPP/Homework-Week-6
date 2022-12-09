@@ -7,7 +7,12 @@
 #include "InputException.h"
 #include <string>
 #include <iostream>
-/*
+
+#define ERROR_CHAR ' '
+#define MORE_THEN_1_CHAR_ERROR "\nWarning - Don't try to build more than one shape at once\n"
+
+void cleanCin(char ch);
+
 int main()
 {
 	std::string nam, col; double rad = 0, ang = 0, ang2 = 180; int height = 0, width = 0;
@@ -29,7 +34,7 @@ int main()
 	while (x != 'x') {
 		std::cout << "which shape would you like to work with?.. \nc=circle, q = quadrilateral, r = rectangle, p = parallelogram" << std::endl;
 		std::cin >> shapetype;
-		InputException::checkInput();
+		cleanCin(shapetype);
 try
 		{
 
@@ -73,6 +78,7 @@ try
 				para.setWidth(width);
 				para.setAngle(ang, ang2);
 				ptrpara->draw();
+				break;
 
 			default:
 				std::cout << "you have entered an invalid letter, please re-enter" << std::endl;
@@ -80,7 +86,7 @@ try
 			}
 			std::cout << "would you like to add more object press any key if not press x" << std::endl;
 			std::cin >> x;
-			InputException::checkInput();
+			cleanCin(shapetype);
 		}
 		catch (std::exception& e) //catching the exception by reference.
 		{
@@ -99,15 +105,31 @@ try
 
 /*
 Static function to check input errors (cin fail), in case user enterd a char to int etc..
-Input: int& num (reference variable)
+Input: none
 Output: none
-
+*/
 void InputException::checkInput()
 {
 	if (std::cin.fail()) //checking if there is a cin fail (input error)
 	{
 		std::cin.clear(); //clearing the input buffer
 		std::cin.ignore(CHAR_MAX, '\n'); //ignoring cin input until '\n' (new line).
-		throw InputException();
+		throw InputException(); //throwing input exception.
 	}
-}*/
+}
+
+/*
+Function to check input errors (multiple letters for a char etc..)
+Input: char ch
+Output: none
+*/
+void cleanCin(char ch)
+{
+	if ((std::cin).get() != '\n') //checking if there is more input then one letter in the cin stream.
+	{
+		ch = ERROR_CHAR; //setting the selection to ERROR_CHAR.
+		std::cin.clear(); //clearing the input buffer
+		std::cin.ignore(CHAR_MAX, '\n'); //ignoring cin input until '\n' (new line).
+		std::cout << MORE_THEN_1_CHAR_ERROR << std::endl;
+	}
+}

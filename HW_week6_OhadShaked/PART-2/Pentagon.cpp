@@ -14,7 +14,7 @@ void Pentagon::draw()
 	std::cout << std::endl << "Color is: " << getColor() << std::endl << "Name is: " << getName() << std::endl << "Rib length is: " << _ribLen << std::endl << "Area is: " << CalArea() << std::endl << "Peramiter is: " << CalPeramiter() << std::endl;
 }
 
-void Pentagon::setLength(double ribLen)
+void Pentagon::setRibLength(double ribLen)
 {
 	if (ribLen < 0)
 	{

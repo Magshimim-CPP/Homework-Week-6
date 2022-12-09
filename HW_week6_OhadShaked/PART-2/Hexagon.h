@@ -13,7 +13,7 @@ private:
 
 public:
 	void draw();
-	void setLength(double ribLen);
+	void setRibLength(double ribLen);
 	virtual double CalArea() const;
 	virtual double CalPeramiter() const;
 	Hexagon(std::string name, std::string color, double ribLen);

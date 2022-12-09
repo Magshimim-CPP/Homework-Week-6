@@ -5,6 +5,9 @@
 #include "Parallelogram.h"
 #include "ShapeException.h"
 #include "InputException.h"
+#include "Hexagon.h"
+#include "Pentagon.h"
+#include "MathUtils.h"
 #include <string>
 #include <iostream>
 
@@ -15,16 +18,20 @@ void cleanCin(char ch);
 
 int main()
 {
-	std::string nam, col; double rad = 0, ang = 0, ang2 = 180; int height = 0, width = 0;
+	std::string nam, col; double rad = 0, ang = 0, ang2 = 180; int height = 0, width = 0, ribLen = 0;
 	Circle circ(col, nam, rad);
 	Quadrilateral quad(nam, col, width, height);
 	rectangle rec(nam, col, width, height);
 	Parallelogram para(nam, col, width, height, ang, ang2);
+	Pentagon pen(nam, col, ribLen);
+	Hexagon hex(nam, col, ribLen);
 
 	Shape *ptrcirc = &circ;
 	Shape *ptrquad = &quad;
 	Shape *ptrrec = &rec;
 	Shape *ptrpara = &para;
+	Shape* ptrpen = &pen;
+	Shape* ptrhex = &hex;
 
 
 	
@@ -32,7 +39,7 @@ int main()
 	const char circle = 'c', quadrilateral = 'q', rectangle = 'r', parallelogram = 'p'; char shapetype;
 	char x = 'y';
 	while (x != 'x') {
-		std::cout << "which shape would you like to work with?.. \nc=circle, q = quadrilateral, r = rectangle, p = parallelogram" << std::endl;
+		std::cout << "which shape would you like to work with?.. \nc = circle, q = quadrilateral, r = rectangle, p = parallelogram, e = pentagon, h = hexagon" << std::endl;
 		std::cin >> shapetype;
 		cleanCin(shapetype);
 try
@@ -78,6 +85,24 @@ try
 				para.setWidth(width);
 				para.setAngle(ang, ang2);
 				ptrpara->draw();
+				break;
+			case 'e': //ADDED PENTAGON
+				std::cout << "enter name, color, and rib length" << std::endl;
+				std::cin >> nam >> col >> ribLen;
+				InputException::checkInput();
+				pen.setName(nam);
+				pen.setColor(col);
+				pen.setRibLength(ribLen);
+				ptrpen->draw();
+				break;
+			case 'h': //ADDED HEXAGON
+				std::cout << "enter name, color, and rib length" << std::endl;
+				std::cin >> nam >> col >> ribLen;
+				InputException::checkInput();
+				hex.setName(nam);
+				hex.setColor(col);
+				hex.setRibLength(ribLen);
+				ptrhex->draw();
 				break;
 
 			default:
@@ -130,6 +155,6 @@ void cleanCin(char ch)
 		ch = ERROR_CHAR; //setting the selection to ERROR_CHAR.
 		std::cin.clear(); //clearing the input buffer
 		std::cin.ignore(CHAR_MAX, '\n'); //ignoring cin input until '\n' (new line).
-		std::cout << MORE_THEN_1_CHAR_ERROR << std::endl;
+		std::cout << MORE_THEN_1_CHAR_ERROR << std::endl; //printing error message.
 	}
 }

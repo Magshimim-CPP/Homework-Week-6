@@ -15,7 +15,7 @@ void Hexagon::draw()
 	std::cout << std::endl << "Color is: " << getColor() << std::endl << "Name is: " << getName() << std::endl << "Rib length is: " << _ribLen << std::endl << "Area is: " << CalArea() << std::endl << "Peramiter is: " << CalPeramiter() << std::endl;
 }
 
-void Hexagon::setLength(double ribLen)
+void Hexagon::setRibLength(double ribLen)
 {
 	if (ribLen < 0)
 	{

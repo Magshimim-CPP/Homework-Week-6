@@ -12,11 +12,11 @@ private:
 	double _ribLen;
 
 public:
-	void draw();
-	void setRibLength(double ribLen);
-	virtual double CalArea() const;
-	virtual double CalPeramiter() const;
-	Pentagon(std::string name, std::string color, double ribLen);
+	void draw(); //Function to print the pentagon's details
+	void setRibLength(double ribLen); //Function to let the user re-set the rib's length
+	virtual double CalArea() const; //Function returns the pentagon's area (using MathUtils::CalPentagonArea())
+	virtual double CalPeramiter() const; //Function returns the pentagon's peramiter
+	Pentagon(std::string name, std::string color, double ribLen); //Constructor function for a pentagon object
 
 };
 #endif

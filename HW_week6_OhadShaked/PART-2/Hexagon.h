@@ -12,11 +12,11 @@ private:
 	double _ribLen;
 
 public:
-	void draw();
-	void setRibLength(double ribLen);
-	virtual double CalArea() const;
-	virtual double CalPeramiter() const;
-	Hexagon(std::string name, std::string color, double ribLen);
+	void draw(); //Function to print the hexagon's details
+	void setRibLength(double ribLen); //Function to let the user re-set the rib's length
+	virtual double CalArea() const; //Function returns the hexagon's area (using MathUtils::CalHexagonArea())
+	virtual double CalPeramiter() const; //Function returns the hexagon's peramiter
+	Hexagon(std::string name, std::string color, double ribLen); //Constructor function for a hexagon object
 	
 };
 #endif

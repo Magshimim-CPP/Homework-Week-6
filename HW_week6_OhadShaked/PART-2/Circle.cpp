@@ -15,7 +15,7 @@ Circle::Circle(std::string nam, std::string col, double rad):Shape(col, nam)
 }
 void Circle::draw()
 {
-	std::cout << std::endl<<"Color is "<<getColor() << std::endl <<"Name is "<< getName()<< std::endl<<"radius is "<<getRad()<< std::endl<<"Circumference: "<< CalCircumference()<< std::endl;;
+	std::cout << std::endl<<"Color is "<<getColor() << std::endl <<"Name is "<< getName()<< std::endl<<"radius is "<<getRad()<< std::endl<<"Circumference: "<< CalCircumference()<< std::endl;
 }
 
 void Circle::setRad(double rad)
